@@ -16,6 +16,8 @@ dependencies:
 
   flutter_dotenv: ^5.0.2
   auth0_flutter: ^1.0.2
+  http: ^0.13.5
+  flutter_secure_storage: ^7.0.1
 
 dev_dependencies:
   flutter_test:
