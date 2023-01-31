@@ -1,4 +1,4 @@
-package com.ehrlich.weatherforcast.weather_forcast
+package com.ehrlich.weatherforecast
 
 import io.flutter.embedding.android.FlutterActivity
 
