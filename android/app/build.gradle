@@ -47,10 +47,11 @@ android {
         applicationId "com.ehrlich.weatherforecast"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        manifestPlaceholders += [auth0Domain: "dev-fvo28clhj56mp0zs.us.auth0.com", auth0Scheme: "com.ehrlich.weatherforecast"]
     }
 
     buildTypes {
