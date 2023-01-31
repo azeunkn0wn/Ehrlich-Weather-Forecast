@@ -2,15 +2,15 @@ import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-class Landing_Screen extends StatefulWidget {
+class LandingScreen extends StatefulWidget {
   final Auth0? auth0;
-  Landing_Screen({this.auth0, Key? key}) : super(key: key);
+  LandingScreen({this.auth0, Key? key}) : super(key: key);
 
   @override
-  State<Landing_Screen> createState() => _Landing_ScreenState();
+  State<LandingScreen> createState() => _LandingScreenState();
 }
 
-class _Landing_ScreenState extends State<Landing_Screen> {
+class _LandingScreenState extends State<LandingScreen> {
   Credentials? _credentials;
   UserProfile? _user;
   late Auth0 auth0;
