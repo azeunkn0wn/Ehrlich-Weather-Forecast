@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
         context,
         MaterialPageRoute<void>(
           builder: (BuildContext context) =>
-              UserWidget(user: authController.user),
+              HomeScreen(user: authController.user),
         ),
       );
     }
@@ -58,15 +58,15 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         leading: Icon(Icons.cloud),
         title: Text('Weather Forecast'),
-        actions: [
-          Visibility(
-            visible: userIsLoggedIn,
-            child: ElevatedButton(
-              onPressed: _logout,
-              child: Text('Logout'),
-            ),
-          )
-        ],
+        // actions: [
+        //   Visibility(
+        //     visible: userIsLoggedIn,
+        //     child: ElevatedButton(
+        //       onPressed: _logout,
+        //       child: Text('Logout'),
+        //     ),
+        //   )
+        // ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

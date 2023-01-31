@@ -32,7 +32,7 @@ class _LandingPageState extends State<LandingPage> {
           if (snapshot.hasData) {
             var credentialsAreStored = snapshot.data!;
             if (credentialsAreStored) {
-              return UserWidget(user: authController.user);
+              return HomeScreen(user: authController.user);
             }
           }
           return LoginScreen(authController: authController);
