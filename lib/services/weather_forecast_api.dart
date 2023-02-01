@@ -29,3 +29,17 @@ class WeatherForecastApiService {
     return result;
   }
 }
+
+/*
+Mobile:
+Date (mm/dd/yyyy) 
+Temperature (F)
+
+Desktop:
+Date(mm/dd/yyyy)
+Temp(F)
+Description 
+Main 
+Pressure 
+Humidity
+*/
