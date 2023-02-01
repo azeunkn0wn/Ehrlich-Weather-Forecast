@@ -44,7 +44,7 @@ class AuthController {
     await storage.deleteAll();
   }
 
-  Future<bool> isStored() async {
+  Future<bool> loadStoredCredential() async {
     bool result = false;
     String? storedCredentials = await storage.read(key: 'credentials');
 

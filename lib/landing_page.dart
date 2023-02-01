@@ -13,19 +13,19 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   AuthController authController = AuthController();
 
-  late Future<bool> userLoginStatus;
+  late Future<bool> validUserCredentialExist;
 
   @override
   void initState() {
     super.initState();
-    userLoginStatus = authController.isStored();
+    validUserCredentialExist = authController.loadStoredCredential();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: userLoginStatus,
+        future: validUserCredentialExist,
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
