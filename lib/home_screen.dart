@@ -41,9 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  void getWeather(String query) async {
-    WeatherForecastApiService api = WeatherForecastApiService();
-    WeatherModel? weather = await api.getWeather(query);
+  void _getWeather(String query) async {
+    WeatherForecastApiService weatherApi = WeatherForecastApiService();
+    WeatherModel? weather = await weatherApi.getWeather(query);
     if (weather != null) {
       if (mounted) {
         Navigator.push(
@@ -97,7 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text('https://github.com/${user.nickname.toString()}'),
+                child: Text(
+                    'https://github.com/${user.nickname.toString()}'), //TODO find the proper way to get the user's github url
               ),
               const Padding(padding: EdgeInsets.only(bottom: 30)),
               Container(
@@ -116,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
                     onPressed: () =>
-                        getWeather(_searchBarController.value.text),
+                        _getWeather(_searchBarController.value.text),
                     child: const Text('Display Weather')),
               )
             ],
