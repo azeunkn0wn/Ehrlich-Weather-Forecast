@@ -65,6 +65,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           children: [
             const Padding(padding: EdgeInsets.only(top: 20)),
             DataTable(
+              border: TableBorder.all(),
               columns: const <DataColumn>[
                 DataColumn(
                   label: Expanded(
