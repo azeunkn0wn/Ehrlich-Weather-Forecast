@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:weather_forcast/controller/auth_api_controller.dart';
-import 'package:weather_forcast/login_screen.dart';
+import 'package:weather_forcast/landing_screen.dart';
 import 'package:weather_forcast/model/weather_model.dart';
 import 'package:weather_forcast/services/weather_forecast_api.dart';
 import 'package:weather_forcast/weather_screen.dart';
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute<void>(
-          builder: (BuildContext context) => LoginScreen(
+          builder: (BuildContext context) => LandingScreen(
             authController: widget.authController,
           ),
         ),

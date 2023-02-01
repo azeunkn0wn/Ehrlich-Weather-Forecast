@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:unities_helper/unities_helper.dart';
 import 'package:weather_forcast/controller/auth_api_controller.dart';
-import 'package:weather_forcast/login_screen.dart';
+import 'package:weather_forcast/landing_screen.dart';
 import 'package:weather_forcast/model/weather_model.dart';
 
 class WeatherScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute<void>(
-          builder: (BuildContext context) => LoginScreen(
+          builder: (BuildContext context) => LandingScreen(
             authController: widget.authController,
           ),
         ),
