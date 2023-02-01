@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:weather_forcast/controller/auth_api_controller.dart';
 import 'package:weather_forcast/home_screen.dart';
-import 'package:weather_forcast/login_screen.dart';
+import 'package:weather_forcast/landing_screen.dart';
 
-class LandingPage extends StatefulWidget {
-  const LandingPage({Key? key}) : super(key: key);
+class StartUpPage extends StatefulWidget {
+  const StartUpPage({Key? key}) : super(key: key);
 
   @override
-  State<LandingPage> createState() => _LandingPageState();
+  State<StartUpPage> createState() => _StartUpPageState();
 }
 
-class _LandingPageState extends State<LandingPage> {
+class _StartUpPageState extends State<StartUpPage> {
   AuthController authController = AuthController();
 
   late Future<bool> validUserCredentialExist;
@@ -34,7 +34,7 @@ class _LandingPageState extends State<LandingPage> {
                 return HomeScreen(authController: authController);
               }
             }
-            return LoginScreen(authController: authController);
+            return LandingScreen(authController: authController);
           }
           return const Center(
             child: CircularProgressIndicator(),
