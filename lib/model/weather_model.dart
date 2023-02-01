@@ -81,8 +81,8 @@ class WeatherModel {
 }
 
 class Coord {
-  double? lon;
-  double? lat;
+  num? lon;
+  num? lat;
 
   Coord({this.lon, this.lat});
 
@@ -125,10 +125,10 @@ class Weather {
 }
 
 class Main {
-  double? temp;
-  double? feelsLike;
-  double? tempMin;
-  double? tempMax;
+  num? temp;
+  num? feelsLike;
+  num? tempMin;
+  num? tempMax;
   num? pressure;
   num? humidity;
 
@@ -162,7 +162,7 @@ class Main {
 }
 
 class Wind {
-  double? speed;
+  num? speed;
   num? deg;
 
   Wind({this.speed, this.deg});
