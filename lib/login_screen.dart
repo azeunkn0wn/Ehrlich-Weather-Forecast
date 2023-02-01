@@ -11,7 +11,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late bool userIsLoggedIn;
   late AuthController authController;
   static const String landingPageMessage =
       'Welcome to the weather forecast web application. Please login with your Github user to use the application and view the  weather in your city';
@@ -20,15 +19,13 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     authController = widget.authController;
-    userIsLoggedIn = authController.isLoggedIn;
+
     super.initState();
   }
 
   Future<void> _login() async {
     await authController.login();
-    setState(() {
-      userIsLoggedIn = authController.isLoggedIn;
-    });
+
     if (mounted) {
       Navigator.pushReplacement(
         context,
@@ -42,8 +39,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('userIsLoggedIn = $userIsLoggedIn');
-
     var margin = EdgeInsets.symmetric(
       horizontal: MediaQuery.of(context).size.width * 0.15,
     );
