@@ -1,7 +1,5 @@
-import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_forcast/api/auth_api_controller.dart';
-import 'package:weather_forcast/drawer/drawer.dart';
 import 'package:weather_forcast/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,7 +12,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late bool userIsLoggedIn;
-  late UserProfile? user;
   late AuthController authController;
   static const String landingPageMessage =
       'Welcome to the weather forecast web application. Please login with your Github user to use the application and view the  weather in your city';
@@ -43,18 +40,10 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  Future<void> _logout() async {
-    await authController.logout();
-    setState(() {
-      userIsLoggedIn = authController.isLoggedIn;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     debugPrint('userIsLoggedIn = $userIsLoggedIn');
     return Scaffold(
-      drawer: MainDrawer(),
       appBar: AppBar(
         leading: Icon(Icons.cloud),
         title: Text('Weather Forecast'),
@@ -69,7 +58,6 @@ class _LoginScreenState extends State<LoginScreen> {
         // ],
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
               padding: EdgeInsets.symmetric(
