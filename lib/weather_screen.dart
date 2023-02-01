@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:unities_helper/unities_helper.dart';
-import 'package:weather_forcast/api/auth_api_controller.dart';
+import 'package:weather_forcast/controller/auth_api_controller.dart';
 import 'package:weather_forcast/login_screen.dart';
 import 'package:weather_forcast/model/weather_model.dart';
 

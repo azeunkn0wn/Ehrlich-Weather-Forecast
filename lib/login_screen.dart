@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_forcast/api/auth_api_controller.dart';
+import 'package:weather_forcast/controller/auth_api_controller.dart';
 import 'package:weather_forcast/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
