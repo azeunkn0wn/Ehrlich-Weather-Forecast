@@ -17,7 +17,7 @@ class MainDrawer extends StatelessWidget {
           child: Column(
             children: [
               CustomDrawerTiles(
-                  icon: Icon(Icons.home), title: "Home", onTap: () {}),
+                  icon: const Icon(Icons.home), title: "Home", onTap: () {}),
             ],
           ),
         ),

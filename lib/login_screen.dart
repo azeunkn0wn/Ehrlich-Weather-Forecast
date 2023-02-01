@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
         context,
         MaterialPageRoute<void>(
           builder: (BuildContext context) =>
-              HomeScreen(user: authController.user),
+              HomeScreen(authController: authController),
         ),
       );
     }
@@ -43,39 +43,41 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     debugPrint('userIsLoggedIn = $userIsLoggedIn');
+
+    var margin = EdgeInsets.symmetric(
+      horizontal: MediaQuery.of(context).size.width * 0.15,
+    );
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.cloud),
-        title: Text('Weather Forecast'),
-        // actions: [
-        //   Visibility(
-        //     visible: userIsLoggedIn,
-        //     child: ElevatedButton(
-        //       onPressed: _logout,
-        //       child: Text('Logout'),
-        //     ),
-        //   )
-        // ],
+        leading: const Icon(Icons.cloud),
+        title: const Text('Weather Forecast'),
       ),
       body: Column(
         children: [
+          const Padding(padding: EdgeInsets.only(bottom: 100)),
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+                margin: margin,
+                child: const Text(
+                  landingPageMessage,
+                  softWrap: true,
+                  maxLines: 5,
+                  textAlign: TextAlign.left,
+                )),
+          ),
+          const Padding(padding: EdgeInsets.only(bottom: 30)),
           Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.1),
-              width: MediaQuery.of(context).size.width * 0.8,
-              child: Text(
-                landingPageMessage,
-                softWrap: true,
-                maxLines: 5,
-                textAlign: TextAlign.left,
-              )),
-          // loginButton(),
-          Visibility(
-              visible: !userIsLoggedIn,
-              child: ElevatedButton(
-                onPressed: _login,
-                child: const Text("Log in"),
-              ))
+            margin: margin,
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: _login,
+                  child: const Text("Log in"),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
