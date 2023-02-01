@@ -1,4 +1,3 @@
-import 'package:auth0_flutter/auth0_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_forcast/api/auth_api_controller.dart';
 import 'package:weather_forcast/home_screen.dart';
@@ -24,23 +23,24 @@ class _LandingPageState extends State<LandingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: userLoginStatus,
-      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-        //TODO Issue: Future Builder not working as intended. This should load stored credentials and skip login page.
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasData) {
-            var credentialsAreStored = snapshot.data!;
-            if (credentialsAreStored) {
-              return HomeScreen(user: authController.user);
+    return Scaffold(
+      body: FutureBuilder(
+        future: userLoginStatus,
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              var credentialsAreStored = snapshot.data!;
+              if (credentialsAreStored) {
+                return HomeScreen(authController: authController);
+              }
             }
+            return LoginScreen(authController: authController);
           }
-          return LoginScreen(authController: authController);
-        }
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
 }
