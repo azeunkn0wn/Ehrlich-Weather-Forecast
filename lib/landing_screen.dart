@@ -3,15 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:weather_forcast/controller/auth_api_controller.dart';
 import 'package:weather_forcast/home_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class LandingScreen extends StatefulWidget {
   final AuthController authController;
-  const LoginScreen({required this.authController, Key? key}) : super(key: key);
+  const LandingScreen({required this.authController, Key? key})
+      : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LandingScreen> createState() => _LandingScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LandingScreenState extends State<LandingScreen> {
   late AuthController authController;
   static const String landingPageMessage =
       'Welcome to the weather forecast web application. Please login with your Github user to use the application and view the  weather in your city';
