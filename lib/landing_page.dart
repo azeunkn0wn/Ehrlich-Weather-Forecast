@@ -4,7 +4,7 @@ import 'package:weather_forcast/home_screen.dart';
 import 'package:weather_forcast/login_screen.dart';
 
 class LandingPage extends StatefulWidget {
-  LandingPage({Key? key}) : super(key: key);
+  const LandingPage({Key? key}) : super(key: key);
 
   @override
   State<LandingPage> createState() => _LandingPageState();
