@@ -50,18 +50,18 @@ class AuthController {
 
     if (storedCredentials != null && storedCredentials.isNotEmpty) {
       try {
-        Map map = await jsonDecode(storedCredentials);
+        Map credentialsMap = await jsonDecode(storedCredentials);
         user = await auth0.api
-            .userProfile(accessToken: map['accessToken'] as String);
+            .userProfile(accessToken: credentialsMap['accessToken'] as String);
 
         credentials = Credentials(
-          idToken: map['idToken'] as String,
-          accessToken: map['accessToken'] as String,
-          refreshToken: map['refreshToken'] as String?,
-          expiresAt: DateTime.parse(map['expiresAt'] as String),
-          scopes: Set<String>.from(map['scopes'] as List<Object?>),
+          idToken: credentialsMap['idToken'] as String,
+          accessToken: credentialsMap['accessToken'] as String,
+          refreshToken: credentialsMap['refreshToken'] as String?,
+          expiresAt: DateTime.parse(credentialsMap['expiresAt'] as String),
+          scopes: Set<String>.from(credentialsMap['scopes'] as List<Object?>),
           user: user!,
-          tokenType: map['tokenType'] as String,
+          tokenType: credentialsMap['tokenType'] as String,
         );
 
         // isLoggedIn = true;
