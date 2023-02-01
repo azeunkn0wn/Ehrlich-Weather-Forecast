@@ -41,6 +41,22 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  void getWeather(String query) async {
+    WeatherForecastApiService api = WeatherForecastApiService();
+    WeatherModel? weather = await api.getWeather(query);
+    if (weather != null) {
+      if (mounted) {
+        Navigator.push(
+          context,
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) =>
+                WeatherScreen(weather, authController: widget.authController),
+          ),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var margin = EdgeInsets.symmetric(
@@ -100,7 +116,9 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
-                    onPressed: () {}, child: const Text('Display Weather')),
+                    onPressed: () =>
+                        getWeather(_searchBarController.value.text),
+                    child: const Text('Display Weather')),
               )
             ],
           ),
