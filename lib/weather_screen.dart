@@ -31,7 +31,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
     }
   }
 
-  //TODO weather grid display
   @override
   Widget build(BuildContext context) {
     double temperatureF = convert<Temperature>(
