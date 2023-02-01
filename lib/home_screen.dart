@@ -64,7 +64,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     return Scaffold(
-        // drawer: const MainDrawer(), //TODO drawer for easy navigation
         appBar: AppBar(
             leading: const Icon(Icons.cloud),
             title: const Text('Weather Forecast'),

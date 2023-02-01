@@ -40,9 +40,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
       widget.weather.main!.temp, // value
     );
 
-    var date = DateFormat('mm/dd/yyyy').format(DateTime.now());
+    var date = DateFormat('MM/dd/yyyy').format(DateTime.now());
     return Scaffold(
-      // drawer: const MainDrawer(), //TODO drawer for easy navigation
       appBar: AppBar(
           leading: const Icon(Icons.cloud),
           title: const Text('Weather Forecast'),
