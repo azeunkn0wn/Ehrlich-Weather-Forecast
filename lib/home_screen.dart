@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:auth0_flutter/auth0_flutter.dart';
-import 'package:weather_forcast/services/auth_api.dart';
-import 'package:weather_forcast/landing_screen.dart';
-import 'package:weather_forcast/model/weather_model.dart';
-import 'package:weather_forcast/services/weather_forecast_api.dart';
-import 'package:weather_forcast/weather_screen.dart';
+import 'package:weather_forecast/services/auth_api.dart';
+import 'package:weather_forecast/landing_screen.dart';
+import 'package:weather_forecast/model/weather_model.dart';
+import 'package:weather_forecast/services/weather_forecast_api.dart';
+import 'package:weather_forecast/weather_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final AuthApiService authService;

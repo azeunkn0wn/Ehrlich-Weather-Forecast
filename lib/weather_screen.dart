@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:unities_helper/unities_helper.dart';
-import 'package:weather_forcast/services/auth_api.dart';
-import 'package:weather_forcast/landing_screen.dart';
-import 'package:weather_forcast/model/weather_model.dart';
+import 'package:weather_forecast/services/auth_api.dart';
+import 'package:weather_forecast/landing_screen.dart';
+import 'package:weather_forecast/model/weather_model.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen(this.weather, {Key? key, required this.authService})

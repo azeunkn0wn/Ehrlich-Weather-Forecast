@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:weather_forcast/services/auth_api.dart';
-import 'package:weather_forcast/home_screen.dart';
-import 'package:weather_forcast/landing_screen.dart';
+import 'package:weather_forecast/services/auth_api.dart';
+import 'package:weather_forecast/home_screen.dart';
+import 'package:weather_forecast/landing_screen.dart';
 
 class StartUpPage extends StatefulWidget {
   const StartUpPage({Key? key}) : super(key: key);

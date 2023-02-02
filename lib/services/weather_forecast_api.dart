@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
-import 'package:weather_forcast/model/weather_model.dart';
-import 'package:weather_forcast/services/weather_forecast_constants.dart';
+import 'package:weather_forecast/model/weather_model.dart';
+import 'package:weather_forecast/services/weather_forecast_constants.dart';
 
 class WeatherForecastApiService {
   Future<WeatherModel?> getWeather(

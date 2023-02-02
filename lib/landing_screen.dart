@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:weather_forcast/services/auth_api.dart';
-import 'package:weather_forcast/home_screen.dart';
+import 'package:weather_forecast/services/auth_api.dart';
+import 'package:weather_forecast/home_screen.dart';
 
 class LandingScreen extends StatefulWidget {
   final AuthApiService authService;
