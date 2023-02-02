@@ -18,7 +18,7 @@ class AuthController {
 
   late Credentials? credentials;
   late UserProfile? user;
-  final storage = const FlutterSecureStorage();
+  final _storage = const FlutterSecureStorage();
 
   Future<void> login() async {
     credentials = await auth0
@@ -28,7 +28,7 @@ class AuthController {
     user = credentials!.user;
     isLoggedIn = true;
 
-    await storage.write(
+    await _storage.write(
         key: 'credentials', value: jsonEncode(credentials!.toMap()));
   }
 
@@ -41,12 +41,12 @@ class AuthController {
 
     user = null;
     isLoggedIn = false;
-    await storage.deleteAll();
+    await _storage.deleteAll();
   }
 
   Future<bool> loadStoredCredential() async {
     bool result = false;
-    String? storedCredentials = await storage.read(key: 'credentials');
+    String? storedCredentials = await _storage.read(key: 'credentials');
 
     if (storedCredentials != null && storedCredentials.isNotEmpty) {
       try {
