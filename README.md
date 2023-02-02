@@ -3,5 +3,6 @@
 
 ## Setting up
 1. Run ```flutter pub get```
-2. rename ```.env.example``` to ```.env```. You can also use your own 0auth2 environment. Make sure Github is created in your Social Connection.
-3. Run the app with ```flutter run```.
+2. Setup Auth0 **[Auth0 Quickstart | Flutter](https://auth0.com/docs/quickstart/native/flutter)**
+3. Create Github connection to your application in Auth0 dashboard > Authentication > Social Connections
+4. Run the app with ```flutter run```.
