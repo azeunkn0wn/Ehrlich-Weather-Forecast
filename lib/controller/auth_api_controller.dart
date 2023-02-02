@@ -15,9 +15,9 @@ class AuthController {
       Auth0(dotenv.env['AUTH0_DOMAIN']!, dotenv.env['AUTH0_CLIENT_ID']!);
 
   bool isLoggedIn = false;
-
   late Credentials? credentials;
   late UserProfile? user;
+
   final _storage = const FlutterSecureStorage();
 
   Future<void> login() async {
