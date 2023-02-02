@@ -14,7 +14,7 @@ class AuthController {
   static Auth0 auth0 =
       Auth0(dotenv.env['AUTH0_DOMAIN']!, dotenv.env['AUTH0_CLIENT_ID']!);
 
-  // bool isLoggedIn = false;
+  bool isLoggedIn = false;
 
   late Credentials? credentials;
   late UserProfile? user;
@@ -26,7 +26,7 @@ class AuthController {
         .login();
 
     user = credentials!.user;
-    // isLoggedIn = true;
+    isLoggedIn = true;
 
     await storage.write(
         key: 'credentials', value: jsonEncode(credentials!.toMap()));
@@ -40,7 +40,7 @@ class AuthController {
     credentials = null;
 
     user = null;
-    // isLoggedIn = false;
+    isLoggedIn = false;
     await storage.deleteAll();
   }
 
@@ -64,7 +64,7 @@ class AuthController {
           tokenType: credentialsMap['tokenType'] as String,
         );
 
-        // isLoggedIn = true;
+        isLoggedIn = true;
         result = true;
       } catch (e) {
         log(e.toString());
