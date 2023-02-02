@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:auth0_flutter/auth0_flutter.dart';
-import 'package:weather_forcast/api/auth_api_controller.dart';
-import 'package:weather_forcast/login_screen.dart';
-import 'package:weather_forcast/model/weather_model.dart';
-import 'package:weather_forcast/services/weather_forecast_api.dart';
-import 'package:weather_forcast/weather_screen.dart';
+import 'package:weather_forecast/services/auth_api.dart';
+import 'package:weather_forecast/landing_screen.dart';
+import 'package:weather_forecast/model/weather_model.dart';
+import 'package:weather_forecast/services/weather_forecast_api.dart';
+import 'package:weather_forecast/weather_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  final AuthController authController;
+  final AuthApiService authService;
 
-  const HomeScreen({final Key? key, required this.authController})
+  const HomeScreen({final Key? key, required this.authService})
       : super(key: key);
 
   @override
@@ -22,35 +22,35 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    user = widget.authController.user!;
+    user = widget.authService.user!;
     _searchBarController.text = '';
     super.initState();
   }
 
   Future<void> _logout() async {
-    await widget.authController.logout();
+    await widget.authService.logout();
     if (mounted) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute<void>(
-          builder: (BuildContext context) => LoginScreen(
-            authController: widget.authController,
+          builder: (BuildContext context) => LandingScreen(
+            authService: widget.authService,
           ),
         ),
       );
     }
   }
 
-  void getWeather(String query) async {
-    WeatherForecastApiService api = WeatherForecastApiService();
-    WeatherModel? weather = await api.getWeather(query);
+  void _getWeather(String query) async {
+    WeatherForecastApiService weatherApi = WeatherForecastApiService();
+    WeatherModel? weather = await weatherApi.getWeather(query);
     if (weather != null) {
       if (mounted) {
         Navigator.push(
           context,
           MaterialPageRoute<void>(
             builder: (BuildContext context) =>
-                WeatherScreen(weather, authController: widget.authController),
+                WeatherScreen(weather, authService: widget.authService),
           ),
         );
       }
@@ -97,7 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text('https://github.com/${user.nickname.toString()}'),
+                child: Text(
+                    'https://github.com/${user.nickname.toString()}'), //TODO find the proper way to get the user's github url
               ),
               const Padding(padding: EdgeInsets.only(bottom: 30)),
               Container(
@@ -116,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
                     onPressed: () =>
-                        getWeather(_searchBarController.value.text),
+                        _getWeather(_searchBarController.value.text),
                     child: const Text('Display Weather')),
               )
             ],

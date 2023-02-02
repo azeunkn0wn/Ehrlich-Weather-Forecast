@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class AuthController {
-  AuthController({
+class AuthApiService {
+  AuthApiService({
     Key? key,
   });
 
@@ -15,10 +15,10 @@ class AuthController {
       Auth0(dotenv.env['AUTH0_DOMAIN']!, dotenv.env['AUTH0_CLIENT_ID']!);
 
   bool isLoggedIn = false;
-
   late Credentials? credentials;
   late UserProfile? user;
-  final storage = const FlutterSecureStorage();
+
+  final _storage = const FlutterSecureStorage();
 
   Future<void> login() async {
     credentials = await auth0
@@ -28,7 +28,7 @@ class AuthController {
     user = credentials!.user;
     isLoggedIn = true;
 
-    await storage.write(
+    await _storage.write(
         key: 'credentials', value: jsonEncode(credentials!.toMap()));
   }
 
@@ -41,27 +41,27 @@ class AuthController {
 
     user = null;
     isLoggedIn = false;
-    await storage.deleteAll();
+    await _storage.deleteAll();
   }
 
-  Future<bool> isStored() async {
+  Future<bool> loadStoredCredential() async {
     bool result = false;
-    String? storedCredentials = await storage.read(key: 'credentials');
+    String? storedCredentials = await _storage.read(key: 'credentials');
 
     if (storedCredentials != null && storedCredentials.isNotEmpty) {
       try {
-        Map map = await jsonDecode(storedCredentials);
+        Map credentialsMap = await jsonDecode(storedCredentials);
         user = await auth0.api
-            .userProfile(accessToken: map['accessToken'] as String);
+            .userProfile(accessToken: credentialsMap['accessToken'] as String);
 
         credentials = Credentials(
-          idToken: map['idToken'] as String,
-          accessToken: map['accessToken'] as String,
-          refreshToken: map['refreshToken'] as String?,
-          expiresAt: DateTime.parse(map['expiresAt'] as String),
-          scopes: Set<String>.from(map['scopes'] as List<Object?>),
+          idToken: credentialsMap['idToken'] as String,
+          accessToken: credentialsMap['accessToken'] as String,
+          refreshToken: credentialsMap['refreshToken'] as String?,
+          expiresAt: DateTime.parse(credentialsMap['expiresAt'] as String),
+          scopes: Set<String>.from(credentialsMap['scopes'] as List<Object?>),
           user: user!,
-          tokenType: map['tokenType'] as String,
+          tokenType: credentialsMap['tokenType'] as String,
         );
 
         isLoggedIn = true;

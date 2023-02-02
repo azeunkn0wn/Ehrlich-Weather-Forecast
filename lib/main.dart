@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:weather_forcast/landing_page.dart';
+import 'package:weather_forecast/startup_page.dart';
 
 void main() async {
   await dotenv.load();
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LandingPage(),
+      home: const StartUpPage(),
     );
   }
 }
