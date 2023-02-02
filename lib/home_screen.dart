@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:auth0_flutter/auth0_flutter.dart';
-import 'package:weather_forcast/controller/auth_api_controller.dart';
+import 'package:weather_forcast/services/auth_api.dart';
 import 'package:weather_forcast/landing_screen.dart';
 import 'package:weather_forcast/model/weather_model.dart';
 import 'package:weather_forcast/services/weather_forecast_api.dart';
 import 'package:weather_forcast/weather_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  final AuthController authController;
+  final AuthApiService authService;
 
-  const HomeScreen({final Key? key, required this.authController})
+  const HomeScreen({final Key? key, required this.authService})
       : super(key: key);
 
   @override
@@ -22,19 +22,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    user = widget.authController.user!;
+    user = widget.authService.user!;
     _searchBarController.text = '';
     super.initState();
   }
 
   Future<void> _logout() async {
-    await widget.authController.logout();
+    await widget.authService.logout();
     if (mounted) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute<void>(
           builder: (BuildContext context) => LandingScreen(
-            authController: widget.authController,
+            authService: widget.authService,
           ),
         ),
       );
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           context,
           MaterialPageRoute<void>(
             builder: (BuildContext context) =>
-                WeatherScreen(weather, authController: widget.authController),
+                WeatherScreen(weather, authService: widget.authService),
           ),
         );
       }

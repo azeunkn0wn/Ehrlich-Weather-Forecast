@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_forcast/controller/auth_api_controller.dart';
+import 'package:weather_forcast/services/auth_api.dart';
 import 'package:weather_forcast/home_screen.dart';
 import 'package:weather_forcast/landing_screen.dart';
 
@@ -11,14 +11,14 @@ class StartUpPage extends StatefulWidget {
 }
 
 class _StartUpPageState extends State<StartUpPage> {
-  AuthController authController = AuthController();
+  AuthApiService authService = AuthApiService();
 
   late Future<bool> validUserCredentialExist;
 
   @override
   void initState() {
     super.initState();
-    validUserCredentialExist = authController.loadStoredCredential();
+    validUserCredentialExist = authService.loadStoredCredential();
   }
 
   @override
@@ -31,10 +31,10 @@ class _StartUpPageState extends State<StartUpPage> {
             if (snapshot.hasData) {
               var credentialsAreStored = snapshot.data!;
               if (credentialsAreStored) {
-                return HomeScreen(authController: authController);
+                return HomeScreen(authService: authService);
               }
             }
-            return LandingScreen(authController: authController);
+            return LandingScreen(authService: authService);
           }
           return const Center(
             child: CircularProgressIndicator(),

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:unities_helper/unities_helper.dart';
-import 'package:weather_forcast/controller/auth_api_controller.dart';
+import 'package:weather_forcast/services/auth_api.dart';
 import 'package:weather_forcast/landing_screen.dart';
 import 'package:weather_forcast/model/weather_model.dart';
 
 class WeatherScreen extends StatefulWidget {
-  const WeatherScreen(this.weather, {Key? key, required this.authController})
+  const WeatherScreen(this.weather, {Key? key, required this.authService})
       : super(key: key);
 
   final WeatherModel weather;
-  final AuthController authController;
+  final AuthApiService authService;
 
   @override
   State<WeatherScreen> createState() => _WeatherScreenState();
@@ -18,13 +18,13 @@ class WeatherScreen extends StatefulWidget {
 
 class _WeatherScreenState extends State<WeatherScreen> {
   Future<void> _logout() async {
-    await widget.authController.logout();
+    await widget.authService.logout();
     if (mounted) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute<void>(
           builder: (BuildContext context) => LandingScreen(
-            authController: widget.authController,
+            authService: widget.authService,
           ),
         ),
       );
